@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,KACI,qBAAuB,CACvB,cAAe,CACf,eACJ,CAGA,OAEI,WAAY,CACZ,YACJ","file":"main.6d56ecc5.css","sourceRoot":"../src","sourcesContent":["body {\n    background-color: white;\n    font-size: 28px;\n    font-weight: bold;\n}\n\n\n.chart\n {\n    width: 500px;\n    height: 500px;\n}\n\n"]}

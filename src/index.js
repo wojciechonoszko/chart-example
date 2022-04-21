@@ -2,7 +2,7 @@
 
 import Chart from 'chart.js/auto';
 
-import { getRelativePosition } from 'chart.js/helpers';
+//import { getRelativePosition } from 'chart.js/helpers';
 
 const ctx = document.getElementById('myChart');
 
@@ -106,70 +106,113 @@ let data = {
 }
 
 let options = {
-    animation: {
-        easing: "easeOutCubic",
-        duration: 700
-    },
-    responsive: true, //responsywnosc
-    legend: {
-        position: 'bottom', //polozenie legendy
-        display: true // pokazuj legende
-    },
-    hover: {
-        mode: 'dataset' //jak pokazywac tooltipy po najechaniu na punkty wykresu
-        //mode: 'label',
-    },
-    scales: {
-        x: {//linie x
-            gridLines: {
-                zeroLineWidth: 1, //linia x=0
-                zeroLineColor: 'rgba(0,0,0,0.3)', //kolor linii x=0
-                color: 'rgba(0,0,0,0.05)', //kolor linii
-                lineWidth: 1 //szerokosc linii
-
-            },
-            display: true, //czy pokazywac dolne opisy jednostek
-            scaleLabel: {// tytul osi x
-                display:true,
-                labelString: 'Month',
-                fontSize: 12,
-                fontStyle: 'bold'
-            },
-            ticks: { //rozmiar jednostek
-                fontSize:10    
-            },
-            labelFormatter: function(e) {
-                return "x: " + e.value;
-
-            }
-
-        },
-        yAxes: { //linie y
-            gridLines: {
-                zeroLineWidth: 1,
-                zeroLineColor: 'rgba(0,0,0,0.3)',
-                color: "rgba(0, 0, 0, 0.05)",
-                lineWidth: 1
-            },
+    animations: {
+        tension: {
+          duration: 1000,
+          easing: 'linear',
+          from: 1,
+          to: 0,
+          loop: false
+        }
+      },
+    plugins: {
+        title: {
             display: true,
-            scaleLabel: {
-                display: true,
-                labelString: 'Wartość',
-                fontSize: 13,
-                fontStyle: 'bold'
+            text: 'Chart Title EXAMPLE'
+        },
+        
+        legend: {
+            position: 'bottom', //polozenie legendy
+            display: true // pokazuj legende
+        },
+        responsive: true, //responsywnosc
+        hover: {
+            mode: 'dataset' //jak pokazywac tooltipy po najechaniu na punkty wykresu
+            //mode: 'label',
+        },
+    },
+    
+    
+    
+    
+    scales: {
+        // x: {//linie x
+        //     //type: 'time',
+        //     gridLines: {
+        //         zeroLineWidth: 1, //linia x=0
+        //         zeroLineColor: 'rgba(0,0,0,0.3)', //kolor linii x=0
+        //         color: 'black', //kolor linii
+        //         lineWidth: 1 //szerokosc linii
+
+        //     },
+        //     display: true, //czy pokazywac dolne opisy jednostek
+        //     scaleLabel: {// tytul osi x
+        //         display:true,
+        //         labelString: 'Month',
+        //         fontSize: 12,
+        //         fontStyle: 'bold'
+        //     },
+        //     ticks: { //rozmiar jednostek
+        //         fontSize:10    
+        //     },
+        //     labelFormatter: function(e) {
+        //         return "x: " + e.value;
+
+        //     }
+
+        // },
+        x: {
+            //type: 'linear',
+            display: true,
+            title: {
+              display: true,
+              text: 'Months'
             },
             ticks: {
-                fontSize: 12,
-                min: 0,
-                max: 100
+              major: {
+                enabled: true
+              },
+              color: (context) => context.tick && context.tick.major && '#FF2020',
+              font: function(context) {
+                if (context.tick && context.tick.major) {
+                  return {
+                    weight: 'normal',
+                    
+                  };
+                }
+              }
             }
-        }
+          },
+    //     y: { //linie y
+    //         gridLines: {
+    //             zeroLineWidth: 1,
+    //             zeroLineColor: 'rgba(0,0,0,0.3)',
+    //             color: "rgba(0, 0, 0, 0.05)",
+    //             lineWidth: 1
+    //         },
+    //         display: true,
+    //         scaleLabel: {
+    //             display: true,
+    //             labelString: 'Wartość',
+    //             fontSize: 13,
+    //             fontStyle: 'bold'
+    //         },
+    //         ticks: {
+    //             fontSize: 12,
+    //             min: 0,
+    //             max: 100
+    //         }
+    //     }
 
-    },
-    title: { //tytuł wykresu
+    // },
+    y: {
         display: true,
-        text: 'Przykładowy wykres'
-    }
+        title: {
+          display: true,
+          text: 'MONTHS values'
+        }
+      },
+    } 
 };
 
 let myLineChart = new Chart(ctx, {

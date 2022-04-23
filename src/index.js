@@ -42,21 +42,25 @@ const ctx = document.getElementById('myChart');
 // });
 
 let data = {
-    labels: ["January", "February", "March", "April"],
+    labels: ["January", "February", "March", "April", "May"],
     datasets: [
         {
-            label: "My First dataset",
+            label: "Temperature, C°",
+            
+            
+            
             //linia
-            borderColor : 'rgba(236,115,87, 0.7)',
-            pointBorderColor : 'rgba(236,115,87,0.7)',
+            borderColor : 'rgba(255, 107, 9, 1)',
+            pointBorderColor : 'rgba(255, 107, 9, 1)',
             borderWidth : 2,
             //kolor tla i legendy
-            fill: true, //czy wypelnic zbior
+            fill: false, //czy wypelnic zbior
             backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
             //ustawienia punktu
+            pointStyle : 'rectRot',
             pointRadius : 4,
             pointBorderWidth: 1,
-            pointBackgroundColor : 'rgba(255,255,255,1)',
+            pointBackgroundColor : 'rgba(255, 107, 9, 1)',
             //ustawienia punkut hover
             pointHoverRadius: 4,
             pointHoverBorderWidth: 3,
@@ -65,12 +69,12 @@ let data = {
             data: [50,30,40,30,32,25,30],
         },
         {
-            label: "My Second dataset",
+            label: "Humidity, %",
             borderColor : 'rgba(75,192,192, 0.7)',
             pointBorderColor : 'rgba(236,115,87,0.7)',
             borderWidth : 2,
             //kolor tla i legendy
-            fill: true, //czy wypelnic zbior
+            fill: false, //czy wypelnic zbior
             backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
             //ustawienia punktu
             pointRadius : 4,
@@ -84,12 +88,12 @@ let data = {
             data: [65, 59, 80, 81, 56, 55, 40],
         },
         {
-            label: "My Third dataset",
+            label: "Wind Speed, m/s",
             borderColor : 'rgba(132,177,237, 0.7)',
             pointBorderColor : 'rgba(236,115,87,0.7)',
             borderWidth : 2,
             //kolor tla i legendy
-            fill: true, //czy wypelnic zbior
+            fill: false, //czy wypelnic zbior
             backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
             //ustawienia punktu
             pointRadius : 4,
@@ -106,24 +110,39 @@ let data = {
 }
 
 let options = {
+    
+    
     animations: {
+      
         tension: {
-          duration: 1000,
-          easing: 'linear',
-          from: 1,
-          to: 0,
-          loop: false
+          duration: 1500,
+          easing: 'easeInCubic',
+          from: 5,
+          to: 0.15,
+          loop: false,
+          
         }
-      },
+        
+        },
     plugins: {
         title: {
             display: true,
-            text: 'Chart Title EXAMPLE'
+            text: 'Chart Title EXAMPLE',
+            color: 'purple',
+            font: {
+              size: 30
+            }
         },
         
         legend: {
-            position: 'bottom', //polozenie legendy
-            display: true // pokazuj legende
+            position: 'top', //polozenie legendy
+            display: true, // pokazuj legende
+            labels: {
+              color: 'red',
+              font: {
+                size: 18
+              }
+            },
         },
         responsive: true, //responsywnosc
         hover: {
@@ -166,11 +185,20 @@ let options = {
             display: true,
             title: {
               display: true,
-              text: 'Months'
+              text: 'Day of the year',
+              color: "pink",
+              
+              font: {               
+                size: 20
+              }
             },
             ticks: {
               major: {
-                enabled: true
+                enabled: true,
+              color: 'orange',
+              font: {
+                size: 22
+              }
               },
               color: (context) => context.tick && context.tick.major && '#FF2020',
               font: function(context) {
@@ -209,10 +237,15 @@ let options = {
         display: true,
         title: {
           display: true,
-          text: 'MONTHS values'
+          text: 'MONTHS values',
+          color: 'green',
+          font: {
+            size: 24
+          }
         }
       },
     } 
+
 };
 
 let myLineChart = new Chart(ctx, {

@@ -89,6 +89,7 @@ let data = {
         },
         {
             label: "Wind Speed, m/s",
+            
             borderColor : 'rgba(132,177,237, 0.7)',
             pointBorderColor : 'rgba(236,115,87,0.7)',
             borderWidth : 2,
@@ -105,6 +106,7 @@ let data = {
             pointHoverBackgroundColor: 'rgba(255,255,255,1)',
             pointHoverBorderColor: 'rgba(236,115,87,1)',
             data: [30, 20, 60, 50, 42, 15, 40],
+            
         }
     ]
 }
@@ -192,47 +194,17 @@ let options = {
                 size: 20
               }
             },
+           
             ticks: {
-              major: {
-                enabled: true,
-              color: 'orange',
               font: {
-                size: 22
-              }
+                size: 17
               },
-              color: (context) => context.tick && context.tick.major && '#FF2020',
-              font: function(context) {
-                if (context.tick && context.tick.major) {
-                  return {
-                    weight: 'normal',
-                    
-                  };
-                }
-              }
+              color: 'red',
+            },
+            grid: {
+              color: 'white'
             }
           },
-    //     y: { //linie y
-    //         gridLines: {
-    //             zeroLineWidth: 1,
-    //             zeroLineColor: 'rgba(0,0,0,0.3)',
-    //             color: "rgba(0, 0, 0, 0.05)",
-    //             lineWidth: 1
-    //         },
-    //         display: true,
-    //         scaleLabel: {
-    //             display: true,
-    //             labelString: 'Wartość',
-    //             fontSize: 13,
-    //             fontStyle: 'bold'
-    //         },
-    //         ticks: {
-    //             fontSize: 12,
-    //             min: 0,
-    //             max: 100
-    //         }
-    //     }
-
-    // },
     y: {
         display: true,
         title: {
@@ -242,8 +214,18 @@ let options = {
           font: {
             size: 24
           }
+        },
+        ticks: {
+          font: {
+            size: 17
+          },
+          color: 'violet',
+        },
+        grid: {
+          color: 'yellow'
         }
       },
+      
     } 
 
 };

@@ -4,42 +4,22 @@ import Chart from 'chart.js/auto';
 
 //import { getRelativePosition } from 'chart.js/helpers';
 
-const ctx = document.getElementById('myChart');
+ const ctx = document.getElementById('myChart');
 
-// const myChart = new Chart(ctx, {
-//     type: 'line',
-//     data: {
-//         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19, 3, 5, 2, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 2
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         }
-//     }
-// });
+const chartShowBtn = document.querySelector('.chart-show-link');
+const chartShowBtnCtn = document.querySelector('.chart-show-button-container');
+const chartCloseBtn = document.querySelector('.chart-hide-link');
+const chartContainer = document.querySelector('.chart-cnt');
+
+function chartDisplay() {
+  ;
+  chartShowBtn.classList.toggle('is-closed');
+  chartContainer.classList.toggle('is-closed');
+  
+}
+
+ chartShowBtn.addEventListener('click', chartDisplay);
+ chartCloseBtn.addEventListener('click', chartDisplay);
 
 let data = {
     labels: ["January", "February", "March", "April", "May"],
@@ -70,48 +50,80 @@ let data = {
         },
         {
             label: "Humidity, %",
-            borderColor : 'rgba(75,192,192, 0.7)',
-            pointBorderColor : 'rgba(236,115,87,0.7)',
+            //linia
+            borderColor : 'rgba(9, 6, 235, 1)',
+            pointBorderColor : 'rgba(9, 6, 235, 1)',
             borderWidth : 2,
             //kolor tla i legendy
             fill: false, //czy wypelnic zbior
-            backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
+            //backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
             //ustawienia punktu
+            pointStyle : 'rectRot',
             pointRadius : 4,
             pointBorderWidth: 1,
-            pointBackgroundColor : 'rgba(255,255,255,1)',
-            //ustawienia punkut hover
+            pointBackgroundColor : 'rgba(9, 6, 235, 1)',
+            //ustawienia punktu hover
             pointHoverRadius: 4,
             pointHoverBorderWidth: 3,
-            pointHoverBackgroundColor: 'rgba(255,255,255,1)',
-            pointHoverBorderColor: 'rgba(236,115,87,1)',
+            pointHoverBackgroundColor: 'rgba(9, 6, 235, 1)',
+            pointHoverBorderColor: 'rgba(9, 6, 235, 1)',
             data: [65, 59, 80, 81, 56, 55, 40],
         },
         {
             label: "Wind Speed, m/s",
             
-            borderColor : 'rgba(132,177,237, 0.7)',
-            pointBorderColor : 'rgba(236,115,87,0.7)',
+            borderColor : 'rgba(31, 211, 221, 0.8)',
+            pointBorderColor : 'rgba(31, 211, 221, 0.8)',
             borderWidth : 2,
             //kolor tla i legendy
             fill: false, //czy wypelnic zbior
-            backgroundColor : 'rgba(236,115,87,0.1)', //wplywa tez na kolor w legendzie
+            backgroundColor : 'rgba(31, 211, 221, 0.8)', //wplywa tez na kolor w legendzie
             //ustawienia punktu
+            pointStyle : 'rectRot',
             pointRadius : 4,
             pointBorderWidth: 1,
-            pointBackgroundColor : 'rgba(255,255,255,1)',
+            pointBackgroundColor : 'rgba(31, 211, 221, 0.8)',
             //ustawienia punkut hover
             pointHoverRadius: 4,
             pointHoverBorderWidth: 3,
-            pointHoverBackgroundColor: 'rgba(255,255,255,1)',
-            pointHoverBorderColor: 'rgba(236,115,87,1)',
+            pointHoverBackgroundColor: 'rgba(31, 211, 221, 0.8)',
+            pointHoverBorderColor: 'rgba(31, 211, 221, 0.8)',
             data: [30, 20, 60, 50, 42, 15, 40],
             
-        }
+        },
+        {
+          label: " Atmosphere Pressure, mmHg",
+          
+          borderColor : 'rgba(188, 25, 161, 0.8)',
+          pointBorderColor : 'rgba(188, 25, 161, 0.8)',
+          borderWidth : 2,
+          //kolor tla i legendy
+          fill: false, //czy wypelnic zbior
+          backgroundColor : 'rgba(188, 25, 161, 0.8)', //wplywa tez na kolor w legendzie
+          //ustawienia punktu
+          pointStyle : 'rectRot',
+          pointRadius : 4,
+          pointBorderWidth: 1,
+          pointBackgroundColor : 'rgba(188, 25, 161, 0.8)',
+          //ustawienia punkut hover
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 3,
+          pointHoverBackgroundColor: 'rgba(188, 25, 161, 0.8)',
+          pointHoverBorderColor: 'rgba(188, 25, 161, 0.8)',
+          data: [10, 35, 25, 55, 37, 75, 40],
+          
+      }
     ]
 }
 
 let options = {
+  maintainAspectRatio: false,
+  
+  responsive: true, //responsywnosc
+        hover: {
+            mode: 'dataset' //jak pokazywac tooltipy po najechaniu na punkty wykresu
+            //mode: 'label',
+        },
     
     
     animations: {
@@ -127,10 +139,11 @@ let options = {
         
         },
     plugins: {
+      
         title: {
             display: true,
             text: 'Chart Title EXAMPLE',
-            color: 'purple',
+            color: 'violet',
             font: {
               size: 30
             }
@@ -140,48 +153,22 @@ let options = {
             position: 'top', //polozenie legendy
             display: true, // pokazuj legende
             labels: {
-              color: 'red',
+              color: 'violet',
               font: {
-                size: 18
-              }
+                size: 14
+              },
+              usePointStyle: true,
+              pointStyle: 'rect'
             },
-        },
-        responsive: true, //responsywnosc
-        hover: {
-            mode: 'dataset' //jak pokazywac tooltipy po najechaniu na punkty wykresu
-            //mode: 'label',
-        },
+        }
+        
     },
     
     
     
     
     scales: {
-        // x: {//linie x
-        //     //type: 'time',
-        //     gridLines: {
-        //         zeroLineWidth: 1, //linia x=0
-        //         zeroLineColor: 'rgba(0,0,0,0.3)', //kolor linii x=0
-        //         color: 'black', //kolor linii
-        //         lineWidth: 1 //szerokosc linii
-
-        //     },
-        //     display: true, //czy pokazywac dolne opisy jednostek
-        //     scaleLabel: {// tytul osi x
-        //         display:true,
-        //         labelString: 'Month',
-        //         fontSize: 12,
-        //         fontStyle: 'bold'
-        //     },
-        //     ticks: { //rozmiar jednostek
-        //         fontSize:10    
-        //     },
-        //     labelFormatter: function(e) {
-        //         return "x: " + e.value;
-
-        //     }
-
-        // },
+       
         x: {
             //type: 'linear',
             display: true,
@@ -235,6 +222,177 @@ let myLineChart = new Chart(ctx, {
     data: data,
     options: options
 })
+
+// =============================================================================================================
+
+// const ctx = document.querySelector('#myChart').getContext('2d');
+// // ctx.height = 500;
+// import { Chart, registerables } from 'chart.js';
+
+// Chart.register(...registerables);
+
+// // let chart;
+
+// const chartShowBtn = document.querySelector('.chart-show-link');
+// const chartCloseBtn = document.querySelector('.chart-hide-link');
+// const chartContainer = document.querySelector('.chart-main-container');
+
+// function chartDisplay() {
+//   chartShowBtn.classList.toggle('is-closed');
+//   chartContainer.classList.toggle('is-closed');
+// }
+
+// chartShowBtn.addEventListener('click', chartDisplay);
+// chartCloseBtn.addEventListener('click', chartDisplay);
+
+// const average = values => {
+//   const sum = values.reduce((previous, current) => (current += previous));
+//   const avg = sum / values.length;
+//   return Number(avg.toFixed(1));
+// };
+
+// function getChartData(weather) {
+//   let chartData = {};
+
+//   chartData.days = weather.daysData.map(e => e.date.month + ' ' + e.date.day + ', ' + e.date.year);
+//   chartData.humidity = weather.daysData
+//     .map(e => e.forecasts.map(i => i.humidity))
+//     .map(j => average(j));
+//   chartData.pressure = weather.daysData
+//     .map(e => e.forecasts.map(i => i.pressure))
+//     .map(j => average(j));
+//   chartData.temperature = weather.daysData
+//     .map(e => e.forecasts.map(i => i.temperature))
+//     .map(j => average(j));
+//   chartData.speed = weather.daysData
+//     .map(e => e.forecasts.map(i => i.windSpeed))
+//     .map(j => average(j));
+
+//   let chartMain = {
+//     type: 'line',
+//     data: {
+//       labels: chartData.days,
+//       datasets: [
+//         {
+//           label: ' — Temperature, C°',
+//           backgroundColor: 'rgb(255, 107, 8)',
+//           borderColor: 'rgb(255, 107, 8)',
+//           data: chartData.temperature,
+//           fill: false,
+//         },
+//         {
+//           hidden: true,
+//           label: ' —  Humidity, %    ',
+//           backgroundColor: 'rgb(10, 6, 234)',
+//           borderColor: 'rgb(10, 6, 234)',
+//           data: chartData.humidity,
+//           fill: false,
+//         },
+//         {
+//           hidden: true,
+//           label: '—  Speed, m/s',
+//           backgroundColor: 'rgb(235, 155, 5)',
+//           borderColor: 'rgb(235, 155, 5)',
+//           data: chartData.speed,
+//           fill: false,
+//         },
+//         {
+//           hidden: true,
+//           label: ' —  Pressure, m/m',
+//           backgroundColor: 'rgb(5, 120, 6)',
+//           borderColor: 'rgb(5, 120, 6)',
+//           data: chartData.pressure,
+//           fill: false,
+//         },
+//       ],
+//     },
+//     options: {
+//       responsive: true,
+//       maintainAspectRatio: false,
+//       plugins: {
+//         title: {
+//           display: true,
+//           text: 'AVERAGE:',
+//           color: 'rgba(255, 255, 255, 0.54)',
+//         },
+//         legend: {
+//           align: 'center',
+
+//           labels: {
+//             boxWidth: 12,
+//             boxHeight: 12,
+//             padding: 10,
+//             font: {
+//               size: 15,
+//             },
+//           },
+//         },
+//       },
+
+//       scales: {
+//         x: {
+//           display: true,
+//           title: {
+//             display: true,
+//             text: '',
+//             color: '#911',
+//             font: {
+//               family: 'Comic Sans MS',
+//               size: 20,
+//               style: '',
+//               lineHeight: 1.2,
+//             },
+//             padding: { top: 20, left: 0, right: 0, bottom: 0 },
+//           },
+//           grid: {
+//             color: 'rgba(255, 255, 255, 0.54)',
+//           },
+//           ticks: {
+//             color: 'rgba(255, 255, 255, 0.54)',
+//           },
+//         },
+//         y: {
+//           display: true,
+//           title: {
+//             display: true,
+//             text: 'Value of indicators',
+//             color: 'rgba(255, 255, 255, 0.54)',
+//             font: {
+//               family: 'Lato',
+//               size: 14,
+//               style: 'normal',
+//               lineHeight: 1.2,
+//             },
+//             padding: { top: 30, left: 0, right: 0, bottom: 0 },
+//           },
+//           grid: {
+//             color: 'rgba(255, 255, 255, 0.54)',
+//           },
+//           ticks: {
+//             color: 'rgba(255, 255, 255, 0.54)',
+//           },
+//         },
+//       },
+//     },
+//   };
+
+//   return chartMain;
+// }
+
+// let weatherChart;
+
+// export default function renderChart(weather) {
+//   if (weatherChart) {
+//     // если график уже существует, то обновляем ему данные
+//     weatherChart.data.datasets = getChartData(weather).data.datasets; // просто дадим чарту новые датасеты, все остальные параметры не меняем
+//     weatherChart.update(); // обновляем график
+//   } else {
+//     // если график не существует (например, первая загрузка), то создадим его
+//     let chartData = getChartData(weather);
+//     weatherChart = new Chart(ctx, chartData); // передаем канвас и полный объект параметров
+//   }
+//   return weatherChart;
+// }
 
 
 

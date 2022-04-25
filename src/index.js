@@ -12,7 +12,7 @@ const chartCloseBtn = document.querySelector('.chart-hide-link');
 const chartContainer = document.querySelector('.chart-cnt');
 
 function chartDisplay() {
-  ;
+  
   chartShowBtn.classList.toggle('is-closed');
   chartContainer.classList.toggle('is-closed');
   
